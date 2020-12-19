@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Pomotivity</title>
 </head>
 <body>
-    <section>
-        <div class="nav">
-            <button>Pomodoro</button>
-            <button>Short Break</button>
-            <button>Long Break</button>
+    <div class="wrapper">
+        <div class="grid">
+            <div class="nav">
+                <button type="button">Pomodoro</button>
+                <button type="button">Short Break</button>
+                <button type="button">Long Break</button>
+            </div>
+            <div class="circle">
+                <div class="timer">
+                    <h1 class="time">25 : 00</h1>
+                    <div class="actions">
+                        <button type="button" class="start">Start</button>
+                        <button type="button" class="reset">Reset</button>
+                    </div>
+                </div>
+            </div> 
         </div>
-        <div class="timer">
-            <div class="time">25 : 00</div>
-            <button class="start"></button>
-            <button class="reset"></button>
-        </div>
-    </section>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
