@@ -1,6 +1,23 @@
+* {
+  font-family: Lato, sans-serif;
+  background-color: #f35f5f;
+  color: #ffffff;
+}
+
 body {
   margin: 0;
   padding: 0;
+}
+
+button {
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+}
+
+button:focus {
+  border: none;
+  outline: none;
 }
 
 .wrapper {
@@ -27,6 +44,20 @@ body {
   justify-content: space-between;
 }
 
+.active-btn {
+  width: 125px;
+  height: 47px;
+  color: #f35f5f;
+  background-color: #ffffff;
+  border-radius: 25px;
+}
+
+.nav-button {
+  width: 125px;
+  height: 47px;
+  border-radius: 25px;
+}
+
 .circle {
   width: 470px;
   height: 470px;
@@ -34,8 +65,9 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: black 15px solid;
+  border: #ffffff 15px solid;
 }
+
 .timer {
   width: 330px;
   height: 210px;
@@ -48,7 +80,8 @@ body {
 .time {
   padding: 0px;
   margin: 0px;
-  font-size: 107px;
+  font-size: 95px;
+  font-weight: normal;
 }
 
 .actions {
@@ -56,4 +89,7 @@ body {
   height: 30px;
   display: flex;
   justify-content: space-between;
+}
+
+.actions-btn {
 }

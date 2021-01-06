@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Pomotivity</title>
 </head>
 <body>
     <div class="wrapper">
         <div class="grid">
             <div class="nav">
-                <button type="button">Pomodoro</button>
-                <button type="button">Short Break</button>
-                <button type="button">Long Break</button>
+                <button type="button" id="pomodoro" >Pomodoro</button>
+                <button type="button"  id="short-break">Short Break</button>
+                <button type="button"  id="long-break">Long Break</button>
             </div>
             <div class="circle">
                 <div class="timer">
-                    <h1 class="time">25 : 00</h1>
+                    <h1 id="time" class="time">25 : 00</h1>
                     <div class="actions">
-                        <button type="button" class="start">Start</button>
-                        <button type="button" class="reset">Reset</button>
+                        <button type="button"><i class="fas fa-play fa-lg actions-btn"></i></button>
+                        <button type="button"><i class="fas fa-undo-alt fa-lg actions-btn"></i></button>
                     </div>
                 </div>
             </div> 
