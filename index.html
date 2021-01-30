@@ -11,17 +11,17 @@
     <div class="wrapper">
         <div class="grid">
             <div class="nav">
-                <button type="button" id="pomodoro" >Pomodoro</button>
-                <button type="button"  id="short-break">Short Break</button>
-                <button type="button"  id="long-break">Long Break</button>
+                <button type="button" id="pomodoro" class="active-btn">Pomodoro</button>
+                <button type="button" id="short-break">Short Break</button>
+                <button type="button" id="long-break">Long Break</button>
             </div>
             <div class="circle">
                 <div class="timer">
-                    <h1 id="time" class="time">25 : 00</h1>
-                    <div class="actions">
-                        <button type="button"><i class="fas fa-play fa-lg actions-btn"></i></button>
-                        <button type="button"><i class="fas fa-undo-alt fa-lg actions-btn"></i></button>
-                    </div>
+                    <h1 id="time" class="time"></h1>
+                    <!-- <div class="actions"> -->
+                        <button type="button"><i id="action" class="fas fa-play fa-lg actions-btn"></i></button>
+                        <!-- <button type="button" id="reset"><i class="fas fa-undo-alt fa-lg actions-btn"></i></button> -->
+                    <!-- </div> -->
                 </div>
             </div> 
         </div>

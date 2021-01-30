@@ -8,63 +8,188 @@ let shortBreak = document.getElementById('short-break');
 let longBreak = document.getElementById('long-break');
 
 // Get timer
-let timer = document.getElementById('time');
+let displayedTime = document.getElementById('time');
+
+// Start button
+let action = document.getElementById('action');
+
+// Reset button
+let reset = document.getElementById('reset');
+
 
 // Add event listeners
-pomodoro.addEventListener('click', pomodoroEvent);
+pomodoro.addEventListener('click',toggleTimer);
 
-shortBreak.addEventListener('click', shortBreakEvent);
+shortBreak.addEventListener('click', toggleTimer);
 
-longBreak.addEventListener('click', longBreakEvent);
+longBreak.addEventListener('click', toggleTimer);
 
+action.addEventListener('click', toggleAction);
+
+// reset.addEventListener('click',resetTimer);
 
 // Set Pomodoro as default when page loaded
 window.onload = function(){
-    pomodoro.classList.add('active-btn');
+    pomodoro.className = "active-btn";
+    time = convertTime(25);
+    displayedTime.innerText = "25:00";   
 }
 
-// Pomodoro event
-function pomodoroEvent(e){
-    console.log(e.target.id)
-    if(e.target.id === "pomodoro"){
-        pomodoro.classList.add('active-btn');
+let timer;
+let time;
+let seconds;
+let minutes;
+let ticker;
 
-        shortBreak.classList.remove('active-btn');
+function toggleAction(e){
+    if(action.classList.contains("fa-play")){
+        action.classList.remove("fa-play");
+
+        action.classList.add("fa-undo-alt");
+
+        runTimer();
+    } else {
+        action.classList.add("fa-play");
+
+        action.classList.remove("fa-undo-alt");
         
-        longBreak.classList.remove('active-btn');
+        resetTimer();
+    }
+    
+
+    console.log(action.className)
+    
+
+}
+
+function runTimer(){
+    ticker = time;
+    console.log(time);
+
+    timer = setInterval(function(){
+        ticker--;
+
+        minutes = parseInt(ticker / 60);
+        seconds = parseInt(ticker % 60);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        displayedTime.innerText = minutes + ":" + seconds;
+
+        console.log(minutes + ":" + seconds);
+
+        if (ticker == 0) {
+            clearInterval(timer);
+        } 
+        
+    },1000);
+
+}
+
+function resetTimer(){
+    ticker = time;
+    minutes = parseInt(ticker / 60);
+    seconds = parseInt(ticker % 60);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+    displayedTime.innerText = minutes + ":" + seconds;
+
+    clearInterval(timer);
+
+}
+
+function convertTime(duration){
+    ticker = parseInt(duration * 60);
+
+    return ticker;
+}
+
+// One function for all events
+function toggleTimer(e){
+    console.log(e.target.id);
+    
+    if(e.target.id === "pomodoro"){
+        // Add class .active-btn to pomodoro button
+        pomodoro.className = "active-btn";
+
+        // Remove class active-btn from short break button             
+        shortBreak.className = " ";
+
+        // Remove class active-btn from long break button 
+        longBreak.className = " ";
+        
+        time = convertTime(25);
 
         // Change timer
-        timer.innerText = "25 : 00"
-    }
-}
+        resetTimer();
 
-// Short break event
-function shortBreakEvent(e){
-    console.log(e.target.id)
-    if(e.target.id === "short-break") {
-        shortBreak.classList.add('active-btn');
+    } else if(e.target.id === "short-break") {
+        // Add class .active-btn to short break button
+        shortBreak.className = "active-btn";
 
-        pomodoro.classList.remove('active-btn');
-
-        longBreak.classList.remove('active-btn');
-
-         // Change timer
-        timer.innerText = "05 : 00";
-    }
-}
-
-// Long break event
-function longBreakEvent(e){
-    console.log(e.target.id)
-    if( e.target.id === "long-break") {
-        longBreak.classList.add('active-btn');
-
-        pomodoro.classList.remove('active-btn');
-
-        shortBreak.classList.remove('active-btn');
+        // Remove class active-btn from pomodoro button     
+        pomodoro.className = " ";
+        
+        // Remove class active-btn from long break button 
+        longBreak.className = " ";
+       
+        time = convertTime(5);
 
          // Change timer
-        timer.innerText = "15 : 00";
+         resetTimer();
+
+    } else if (e.target.id === "long-break") {
+        // Add class .active-btn to long break button
+        longBreak.className = "active-btn";
+
+        // Remove class active-btn from pomodoro button
+        pomodoro.className = " ";
+        
+        // Remove class active-btn from short break button
+        shortBreak.className = " ";
+
+        time = convertTime(15);
+        
+        // Change timer
+        resetTimer();
+         
     }
 }
+
+
+// function a(){
+//     let test = "hello";
+//     return test;
+    
+// }
+
+
+// function sayHello(string){
+//     let message = string;
+//     console.log(message);
+// }
+
+
+// sayHello("hello");
+
+// example passing value from function to function
+
+// function a(){
+//     let test = "hello";
+//     return test;
+    
+// }
+
+
+// function b(){
+//     let valueofA = a();
+//     console.log(valueofA);
+// }
+
+
+// b();
+
 
