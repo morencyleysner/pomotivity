@@ -83,13 +83,3 @@ button:focus {
   font-size: 95px;
   font-weight: normal;
 }
-
-.actions {
-  width: 103px;
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.actions-btn {
-}

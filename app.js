@@ -1,66 +1,66 @@
-// Get pomodoro button
+// Buttons
 let pomodoro = document.getElementById('pomodoro');
-
-// Get short-break button
 let shortBreak = document.getElementById('short-break');
-
-// Get long-break button
 let longBreak = document.getElementById('long-break');
-
-// Get timer
 let displayedTime = document.getElementById('time');
-
-// Start button
 let action = document.getElementById('action');
-
-// Reset button
 let reset = document.getElementById('reset');
 
 
-// Add event listeners
+// Event listeners
 pomodoro.addEventListener('click',toggleTimer);
-
 shortBreak.addEventListener('click', toggleTimer);
-
 longBreak.addEventListener('click', toggleTimer);
-
 action.addEventListener('click', toggleAction);
-
-// reset.addEventListener('click',resetTimer);
 
 // Set Pomodoro as default when page loaded
 window.onload = function(){
     pomodoro.className = "active-btn";
+
     time = convertTime(25);
-    displayedTime.innerText = "25:00";   
+
+    displayedTime.innerText = "25:00"; 
+
+    currentEvent = "pomodoro";
+};
+
+function showNotification(){
+    if(Notification.permission === "granted"){
+        notificationMessage();
+    } else if(Notification.permission === "default"){
+        Notification.requestPermission().then(permission => {
+            if(permission === "granted"){
+                notificationMessage();
+            };
+        });
+    };
+
+    // return notifications;
 }
+
+function notificationMessage(){
+    if(currentEvent === "pomodoro"){
+        new Notification("Pomodoro has ended", {
+            body: "take a break"
+        });
+    } else if(currentEvent === "short-break"){
+        new Notification("Short break has ended", {
+            body: "Start focusing"
+        });
+    } else if(currentEvent === "long-break"){
+        new Notification("Long break has ended", {
+            body: "Start focusing"
+        });
+    };
+   
+};
 
 let timer;
 let time;
 let seconds;
 let minutes;
 let ticker;
-
-function toggleAction(e){
-    if(action.classList.contains("fa-play")){
-        action.classList.remove("fa-play");
-
-        action.classList.add("fa-undo-alt");
-
-        runTimer();
-    } else {
-        action.classList.add("fa-play");
-
-        action.classList.remove("fa-undo-alt");
-        
-        resetTimer();
-    }
-    
-
-    console.log(action.className)
-    
-
-}
+let currentEvent;
 
 function runTimer(){
     ticker = time;
@@ -79,13 +79,15 @@ function runTimer(){
 
         console.log(minutes + ":" + seconds);
 
-        if (ticker == 0) {
-            clearInterval(timer);
-        } 
+        if (ticker == 0){
+            resetTimer();
+            showNotification();
+            toggleAction();
+        } ;
         
     },1000);
 
-}
+};
 
 function resetTimer(){
     ticker = time;
@@ -99,18 +101,36 @@ function resetTimer(){
 
     clearInterval(timer);
 
-}
+};
 
 function convertTime(duration){
     ticker = parseInt(duration * 60);
 
     return ticker;
-}
+};
 
-// One function for all events
-function toggleTimer(e){
-    console.log(e.target.id);
+// Toggle between start and reset function
+function toggleAction(){
+    if(action.classList.contains("fa-play")){
+        action.classList.remove("fa-play");
+
+        action.classList.add("fa-undo-alt");
+
+        runTimer();
+    } else {
+        action.classList.remove("fa-undo-alt");
+
+        action.classList.add("fa-play");
+
+        resetTimer();
+    };
     
+    // console.log(action.className);
+
+};
+
+// Toggle between pomodoro, short break and long break
+function toggleTimer(e){
     if(e.target.id === "pomodoro"){
         // Add class .active-btn to pomodoro button
         pomodoro.className = "active-btn";
@@ -122,6 +142,9 @@ function toggleTimer(e){
         longBreak.className = " ";
         
         time = convertTime(25);
+        
+        currentEvent = e.target.id;
+        // console.log(currentEvent);
 
         // Change timer
         resetTimer();
@@ -138,6 +161,9 @@ function toggleTimer(e){
        
         time = convertTime(5);
 
+        currentEvent = e.target.id;
+        // console.log(currentEvent);
+
          // Change timer
          resetTimer();
 
@@ -152,12 +178,16 @@ function toggleTimer(e){
         shortBreak.className = " ";
 
         time = convertTime(15);
+
+        currentEvent = e.target.id;
+        // console.log(currentEvent);
         
         // Change timer
         resetTimer();
          
-    }
-}
+    };
+};
+
 
 
 // function a(){
@@ -191,5 +221,7 @@ function toggleTimer(e){
 
 
 // b();
+
+
 
 
