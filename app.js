@@ -34,9 +34,7 @@ function showNotification(){
             };
         });
     };
-
-    // return notifications;
-}
+};
 
 function notificationMessage(){
     if(currentEvent === "pomodoro"){
@@ -124,9 +122,6 @@ function toggleAction(){
 
         resetTimer();
     };
-    
-    // console.log(action.className);
-
 };
 
 // Toggle between pomodoro, short break and long break
@@ -144,7 +139,6 @@ function toggleTimer(e){
         time = convertTime(25);
         
         currentEvent = e.target.id;
-        // console.log(currentEvent);
 
         // Change timer
         resetTimer();
@@ -162,10 +156,9 @@ function toggleTimer(e){
         time = convertTime(5);
 
         currentEvent = e.target.id;
-        // console.log(currentEvent);
 
-         // Change timer
-         resetTimer();
+        // Change timer
+        resetTimer();
 
     } else if (e.target.id === "long-break") {
         // Add class .active-btn to long break button
@@ -180,48 +173,9 @@ function toggleTimer(e){
         time = convertTime(15);
 
         currentEvent = e.target.id;
-        // console.log(currentEvent);
         
         // Change timer
         resetTimer();
          
     };
 };
-
-
-
-// function a(){
-//     let test = "hello";
-//     return test;
-    
-// }
-
-
-// function sayHello(string){
-//     let message = string;
-//     console.log(message);
-// }
-
-
-// sayHello("hello");
-
-// example passing value from function to function
-
-// function a(){
-//     let test = "hello";
-//     return test;
-    
-// }
-
-
-// function b(){
-//     let valueofA = a();
-//     console.log(valueofA);
-// }
-
-
-// b();
-
-
-
-

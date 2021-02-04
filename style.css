@@ -10,6 +10,8 @@ body {
 }
 
 button {
+  width: 125px;
+  height: 47px;
   font-size: 17px;
   font-weight: bold;
   border: none;
@@ -45,8 +47,6 @@ button:focus {
 }
 
 .active-btn {
-  width: 125px;
-  height: 47px;
   color: #f35f5f;
   background-color: #ffffff;
   border-radius: 25px;
