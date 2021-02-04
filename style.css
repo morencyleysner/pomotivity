@@ -83,3 +83,39 @@ button:focus {
   font-size: 95px;
   font-weight: normal;
 }
+
+#action {
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+}
+
+/* On screens that are 360px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  .grid {
+    height: 479px;
+  }
+  .nav {
+    width: 324px;
+    height: 42px;
+  }
+
+  .active-btn {
+    width: 115px;
+    height: 45px;
+  }
+
+  .circle {
+    width: 320px;
+    height: 320px;
+  }
+
+  .timer {
+    width: 270px;
+    height: 165px;
+  }
+
+  .time {
+    font-size: 77px;
+  }
+}
