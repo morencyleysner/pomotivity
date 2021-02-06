@@ -100,11 +100,6 @@ button:focus {
     height: 42px;
   }
 
-  .active-btn {
-    width: 115px;
-    height: 45px;
-  }
-
   .circle {
     width: 320px;
     height: 320px;
