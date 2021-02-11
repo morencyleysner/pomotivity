@@ -77,6 +77,9 @@ function runTimer(){
             resetTimer();
             showNotification();
             toggleAction();
+
+            action.classList.remove("fa-undo-alt");
+            action.classList.add("fa-play");
         } ;
         
     },1000);
@@ -85,7 +88,7 @@ function runTimer(){
 
 function resetTimer(){
     ticker = time;
-    
+
     minutes = parseInt(ticker / 60);
     seconds = parseInt(ticker % 60);
 
@@ -95,10 +98,6 @@ function resetTimer(){
     displayedTime.innerText = minutes + ":" + seconds;
 
     clearInterval(timer);
-
-    action.classList.remove("fa-undo-alt");
-
-    action.classList.add("fa-play");
 
 };
 
