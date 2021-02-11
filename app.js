@@ -6,7 +6,6 @@ let displayedTime = document.getElementById('time');
 let action = document.getElementById('action');
 let reset = document.getElementById('reset');
 
-
 // Event listeners
 pomodoro.addEventListener('click',toggleTimer);
 shortBreak.addEventListener('click', toggleTimer);
@@ -50,9 +49,9 @@ function notificationMessage(){
             body: "Start focusing"
         });
     };
-   
 };
 
+// Globals
 let timer;
 let time;
 let seconds;
@@ -62,7 +61,6 @@ let currentEvent;
 
 function runTimer(){
     ticker = time;
-    console.log(time);
 
     timer = setInterval(function(){
         ticker--;
@@ -74,8 +72,6 @@ function runTimer(){
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         displayedTime.innerText = minutes + ":" + seconds;
-
-        console.log(minutes + ":" + seconds);
 
         if (ticker == 0){
             resetTimer();
@@ -89,6 +85,7 @@ function runTimer(){
 
 function resetTimer(){
     ticker = time;
+    
     minutes = parseInt(ticker / 60);
     seconds = parseInt(ticker % 60);
 
@@ -98,6 +95,10 @@ function resetTimer(){
     displayedTime.innerText = minutes + ":" + seconds;
 
     clearInterval(timer);
+
+    action.classList.remove("fa-undo-alt");
+
+    action.classList.add("fa-play");
 
 };
 
@@ -143,7 +144,7 @@ function toggleTimer(e){
         // Change timer
         resetTimer();
 
-    } else if(e.target.id === "short-break") {
+    } else if(e.target.id === "short-break"){
         // Add class .active-btn to short break button
         shortBreak.className = "active-btn";
 
@@ -160,7 +161,7 @@ function toggleTimer(e){
         // Change timer
         resetTimer();
 
-    } else if (e.target.id === "long-break") {
+    } else if (e.target.id === "long-break"){
         // Add class .active-btn to long break button
         longBreak.className = "active-btn";
 
