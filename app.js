@@ -127,55 +127,54 @@ function toggleAction(){
 // Toggle between pomodoro, short break and long break
 function toggleTimer(e){
     if(e.target.id === "pomodoro"){
-        // Add class .active-btn to pomodoro button
+        // Add class .active-btn
         pomodoro.className = "active-btn";
 
-        // Remove class active-btn from short break button             
+        // Remove class .active-btn
         shortBreak.className = " ";
-
-        // Remove class active-btn from long break button 
         longBreak.className = " ";
         
         time = convertTime(25);
         
         currentEvent = e.target.id;
 
-        // Change timer
         resetTimer();
 
+        action.classList.remove("fa-undo-alt");
+        action.classList.add("fa-play");
+
     } else if(e.target.id === "short-break"){
-        // Add class .active-btn to short break button
+        // Add class .active-btn
         shortBreak.className = "active-btn";
 
-        // Remove class active-btn from pomodoro button     
+        // Remove class .active-btn
         pomodoro.className = " ";
-        
-        // Remove class active-btn from long break button 
         longBreak.className = " ";
        
         time = convertTime(5);
 
         currentEvent = e.target.id;
 
-        // Change timer
         resetTimer();
 
+        action.classList.remove("fa-undo-alt");
+        action.classList.add("fa-play");
+
     } else if (e.target.id === "long-break"){
-        // Add class .active-btn to long break button
+        // Add class .active-btn
         longBreak.className = "active-btn";
 
-        // Remove class active-btn from pomodoro button
+        // Remove class .active-btn
         pomodoro.className = " ";
-        
-        // Remove class active-btn from short break button
         shortBreak.className = " ";
 
         time = convertTime(15);
 
         currentEvent = e.target.id;
         
-        // Change timer
         resetTimer();
-         
+
+        action.classList.remove("fa-undo-alt");
+        action.classList.add("fa-play");   
     };
 };
