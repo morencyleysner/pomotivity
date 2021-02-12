@@ -97,6 +97,9 @@ button:active {
 
 /* Media queries for mobile and tablet */
 @media screen and (max-width: 600px) {
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
   .grid {
     height: 479px;
   }
