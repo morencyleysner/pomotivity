@@ -23,6 +23,10 @@ button:focus {
   outline: none;
 }
 
+button:active {
+  transform: translateY(4px);
+}
+
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -108,11 +112,11 @@ button:focus {
 
   .timer {
     width: 270px;
-    height: 165px;
+    height: 145px;
   }
 
   .time {
-    font-size: 77px;
+    font-size: 65px;
   }
 }
 
